@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+// https://peterfriese.dev/posts/swiftui-concurrency-essentials-part1/
+
+/* TODO:
+ - Handling request errors
+ - Enum for case errors
+ - Move code pieces to file layers
+ - Populate Word model object
+ - Prototype UI: Main & Detail screens
+ - Navigation btw to screens
+ - Create: func buildURLRequest(for searchTerm: String) -> URLRequest
+ - Create: search(for searchTerm: String) async -> Word { ... }
+ - Create: func executeQuery(for searchTerm: String) async
+ - Implement @MainActor attribute
+ - ...
+*/
+
 // Model
 /// Representa una palabra y sus definiciones
 struct Word {
@@ -21,20 +37,20 @@ struct Definition {
 
 // ViewModel
 class WordDetailsViewModel: ObservableObject {
+    
+    // Networking
     func searchBooks(searchTerm: String) async -> String {
         let url = URL(string: "https://wordsapiv1.p.rapidapi.com/words/Swift/definitions?word=Swift")!
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             debugPrint("Los datos recibidos son", data)
-            // Parsing goes here
-        
+            // TODO: Parsing goes here
         }
         catch {
           return ""
         }
         return ""
       }
-  
 }
 
 // View
@@ -50,7 +66,7 @@ struct ContentView: View {
             Task {
               await viewModel.searchBooks(searchTerm: "Swift") // async code ⌛️
             }
-          }
+        }
     }
 }
 
