@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6A76C6728A3DED6001FC72E /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */; };
+		A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */; };
+		A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */; };
+		A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */; };
+		A6A76C7728A3E422001FC72E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C7628A3E422001FC72E /* Constants.swift */; };
 		A6EF82992893383C004A462F /* AsyncAwaitSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */; };
-		A6EF829B2893383C004A462F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF829A2893383C004A462F /* ContentView.swift */; };
 		A6EF829D2893383C004A462F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829C2893383C004A462F /* Assets.xcassets */; };
 		A6EF82A02893383C004A462F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829F2893383C004A462F /* Preview Assets.xcassets */; };
 		A6EF82AA2893383D004A462F /* AsyncAwaitSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF82A92893383D004A462F /* AsyncAwaitSwiftUITests.swift */; };
@@ -34,9 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6A5A6A6289D6260009B758B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
+		A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewModel.swift; sourceTree = "<group>"; };
+		A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
+		A6A76C7628A3E422001FC72E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6EF82952893383C004A462F /* AsyncAwaitSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncAwaitSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitSwiftUIApp.swift; sourceTree = "<group>"; };
-		A6EF829A2893383C004A462F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A6EF829C2893383C004A462F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6EF829F2893383C004A462F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6EF82A52893383D004A462F /* AsyncAwaitSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncAwaitSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +80,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6A76C6128A3DE51001FC72E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6A76C6228A3DE59001FC72E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A6A76C6328A3DE64001FC72E /* EntryPoint */ = {
+			isa = PBXGroup;
+			children = (
+				A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */,
+			);
+			path = EntryPoint;
+			sourceTree = "<group>";
+		};
+		A6A76C6B28A3DF7F001FC72E /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		A6A76C6C28A3DFB2001FC72E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6A76C7528A3E407001FC72E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A6A76C7628A3E422001FC72E /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A6EF828C2893383C004A462F = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +151,14 @@
 		A6EF82972893383C004A462F /* AsyncAwaitSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */,
-				A6EF829A2893383C004A462F /* ContentView.swift */,
+				A6A76C6328A3DE64001FC72E /* EntryPoint */,
+				A6A76C6C28A3DFB2001FC72E /* Model */,
+				A6A76C6228A3DE59001FC72E /* ViewModel */,
+				A6A76C6128A3DE51001FC72E /* View */,
+				A6A76C6B28A3DF7F001FC72E /* WebServices */,
+				A6A76C7528A3E407001FC72E /* Utils */,
 				A6EF829C2893383C004A462F /* Assets.xcassets */,
+				A6A5A6A6289D6260009B758B /* Info.plist */,
 				A6EF829E2893383C004A462F /* Preview Content */,
 			);
 			path = AsyncAwaitSwiftUI;
@@ -257,8 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6EF829B2893383C004A462F /* ContentView.swift in Sources */,
+				A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */,
+				A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */,
+				A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */,
+				A6A76C6728A3DED6001FC72E /* AlbumDetailView.swift in Sources */,
 				A6EF82992893383C004A462F /* AsyncAwaitSwiftUIApp.swift in Sources */,
+				A6A76C7728A3E422001FC72E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -420,11 +486,13 @@
 				DEVELOPMENT_TEAM = QE68JBKWWB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AsyncAwaitSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,11 +517,13 @@
 				DEVELOPMENT_TEAM = QE68JBKWWB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AsyncAwaitSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
