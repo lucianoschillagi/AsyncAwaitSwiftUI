@@ -17,7 +17,7 @@ struct AlbumDetailView: View {
       }
         .onAppear {
             Task {
-                await viewModel.getAlbums(artist: "devo") // async code ⌛️
+                await viewModel.getAlbums(artist: "queen") // async code ⌛️
             }
         }
     }
