@@ -21,9 +21,9 @@ enum ItunesAPI {
     // Returns the called URL
     // https://itunes.apple.com/search?term=devo&entity=album
     // https:// 👉 Scheme
-    // wordsapiv1.p.rapidapi.com/ 👉 Host
-    // words/Swift/definitions 👉 Path
-    // ?word=swift 👉 Query
+    // itunes.apple.com/ 👉 Host
+    // search 👉 Path
+    // ?term=devo&entity=album 👉 Query
     
     var url: URL? {
         var component = URLComponents()
@@ -47,7 +47,8 @@ enum ItunesAPI {
     private func wordQuery() -> [URLQueryItem]? {
         switch self {
         case .getAlbums(let album):
-            return [URLQueryItem(name: "term", value: album.description), URLQueryItem(name: "entity", value: "album")]
+            return [URLQueryItem(name: "term", value: album.description),
+                    URLQueryItem(name: "entity", value: "album")]
         }
     }
 }
