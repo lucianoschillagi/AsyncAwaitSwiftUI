@@ -49,6 +49,8 @@ enum ItunesAPI {
         case .getAlbums(let album):
             return [URLQueryItem(name: "term", value: album.description),
                     URLQueryItem(name: "entity", value: "album")]
+       //            URLQueryItem(name: "entity", value: "albffum")]
+            
         }
     }
 }
@@ -59,15 +61,40 @@ extension AlbumDetailViewModel {
     @MainActor
     func getAlbums(artist: String) async  {
         let url = ItunesAPI.getAlbums(artist: artist).url!
-        
-        // OK scenario ✅
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await URLSession.shared.data(from: url)
             let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data)
             self.searchedAlbums = decodedAlbum.results
+            
+            // MARK: - handling server responses here
+            let serverResponse = response as? HTTPURLResponse
+            print("👉", data)
+            print("👉", serverResponse?.statusCode)
+            
+            // NOTE: la codeline del 'try' Sí se pudo ejecutar
+            print("👉 La request SÍ se pudo ejecutar")
+            // OK scenario ✅
+            // 200-299
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 300 && statusCode <= 599 else {
+                print("server response is btw 200-299, ✅")
+                return
+            }
+            
+            // ERROR scenario ❌
+            // 400-499
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                print("server response is btw 400-499, ❌, todo: handle the error")
+                return
+            }
+            
         }
+        
+        // MARK: - handling do block error here
         // ERROR scenario ❌
         catch {
+            // NOTE: la codeline del 'try' NO se pudo ejecutar
+            print(" 👉 La request NO se pudo ejecutar")
             
         }
       }
