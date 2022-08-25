@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A68E1EFA28B7D3D000C73644 /* error-handling.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "error-handling.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A6A5A6A6289D6260009B758B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
 		A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewModel.swift; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		A6EF82972893383C004A462F /* AsyncAwaitSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				A68E1EFA28B7D3D000C73644 /* error-handling.playground */,
 				A6A76C6328A3DE64001FC72E /* EntryPoint */,
 				A6A76C6C28A3DFB2001FC72E /* Model */,
 				A6A76C6228A3DE59001FC72E /* ViewModel */,

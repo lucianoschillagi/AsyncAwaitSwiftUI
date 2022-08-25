@@ -1,0 +1,91 @@
+
+import Foundation
+
+var errorLabel = "" // shows the error description to the user (feedback)
+
+// Error Protocol: A type representing an error value that can be thrown.
+enum ValidationError: Error {
+    case tooShort
+    case tooLong
+    case invalidCharacterFound(Character)
+    case invalidWhiteSpaceFound(Character) // TODO
+}
+
+extension ValidationError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .tooShort:
+            return NSLocalizedString(
+                "❌ Your username needs to be at least 4 characters long",
+                comment: ""
+            )
+        case .tooLong:
+            return NSLocalizedString(
+                "❌ Your username can't be longer than 14 characters",
+                comment: ""
+            )
+        case .invalidCharacterFound(let character):
+            let format = NSLocalizedString(
+                "❌ Your username can't contain the character '%@'",
+                comment: ""
+            )
+            return String(format: format, String(character))
+            
+        case .invalidWhiteSpaceFound(let character):
+            let format = NSLocalizedString(
+                "❌ Invalid whitespace found",
+                comment: ""
+            )
+            return String(format: format, String(character))
+            
+        }
+    }
+}
+
+func validate(username: String) throws {
+    
+    // Error Condition 1
+    guard username.count > 3 else {
+        // if "username" has 2 or fewer characters, throw an error
+        throw ValidationError.tooShort
+    }
+    
+    // Error Condition 2
+    guard username.count < 15 else {
+        // if "username" has 15 or more characters, throw an error
+        throw ValidationError.tooLong
+    }
+    
+    // Error Condition 3
+    for character in username {
+        guard character.isLetter else {
+            // "username" will only accept characters
+            throw ValidationError.invalidCharacterFound(character)
+        }
+    }
+    
+    // TODO: Error Condition 4
+//    for character in username {
+//        guard character.isWhitespace else {
+//            // "username" will only accept characters
+//            throw ValidationError.invalidWhiteSpaceFound(character)
+//        }
+//    }
+    
+    // OK Condition
+    if username.count > 3 || username.count < 15 {
+        print("✅ OK")
+    }
+}
+
+func userDidPickName(_ username: String) {
+    do {
+        try validate(username: username)
+    } catch {
+        errorLabel = error.localizedDescription
+    }
+}
+
+userDidPickName("fafasfd#")
+print(errorLabel)
+

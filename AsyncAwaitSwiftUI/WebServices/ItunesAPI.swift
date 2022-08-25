@@ -14,45 +14,34 @@ enum ItunesAPI {
     
     // Builds a URL to 'get artist's albums' method
     case getAlbums(artist: String)
-
-    // Builds a URL to '----' method
-//    case anotherCase
-
-    // Returns the called URL
-    // https://itunes.apple.com/search?term=devo&entity=album
-    // https:// 👉 Scheme
-    // itunes.apple.com/ 👉 Host
-    // search 👉 Path
-    // ?term=devo&entity=album 👉 Query
-    
     var url: URL? {
         var component = URLComponents()
         component.scheme = "https" // static
         component.host = "itunes.apple.com" // static
         component.path = "/search" // dynamic
-        component.queryItems = wordQuery() // dynamic
+        component.queryItems = queryBuilder() // dynamic
         return component.url
     }
 
+    // query builder
+    private func queryBuilder() -> [URLQueryItem]? {
+        switch self {
+        case .getAlbums(let album):
+            return [URLQueryItem(name: "term", value: album.description),
+                    URLQueryItem(name: "entity", value: "album")]
+       //            URLQueryItem(name: "entity", value: "albffum")]
+        }
+    }
+    
     // path builder
-//    private func wordPath() -> String? {
+//    private func pathBuilder() -> String? {
 //        // https://wordsapiv1.p.rapidapi.com/words/Swift/definitions
 //        switch self {
 //        case .getAlbums(let word):
 //            return "words/\(word.description)/definitions"
 //        }
 //    }
-
-    // query builder
-    private func wordQuery() -> [URLQueryItem]? {
-        switch self {
-        case .getAlbums(let album):
-            return [URLQueryItem(name: "term", value: album.description),
-                    URLQueryItem(name: "entity", value: "album")]
-       //            URLQueryItem(name: "entity", value: "albffum")]
-            
-        }
-    }
+    
 }
 
 extension AlbumDetailViewModel {
