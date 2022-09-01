@@ -30,14 +30,14 @@ extension ValidationError: LocalizedError {
                 comment: ""
             )
             return String(format: format, String(character))
-            
+
         case .invalidWhiteSpaceFound(let character):
             let format = NSLocalizedString(
                 "❌ Invalid whitespace found",
                 comment: ""
             )
             return String(format: format, String(character))
-            
+
         }
     }
 }
@@ -64,28 +64,28 @@ func validate(username: String) throws {
         }
     }
     
-    // TODO: Error Condition 4
-//    for character in username {
-//        guard character.isWhitespace else {
-//            // "username" will only accept characters
-//            throw ValidationError.invalidWhiteSpaceFound(character)
-//        }
-//    }
+    // TODO: Error Condition 4, whitespaces
+    
+    
+
     
     // OK Condition
-    if username.count > 3 || username.count < 15 {
+    if username.count > 3 && username.count < 15 {
         print("✅ OK")
     }
 }
 
 func userDidPickName(_ username: String) {
     do {
-        try validate(username: username)
+        try validate(username: username) // "validate" func can throw an error
     } catch {
         errorLabel = error.localizedDescription
     }
 }
 
-userDidPickName("fafasfd#")
+// TODO: async func version of 'userDidPickName(uesrname: String)'
+
+userDidPickName("Gdkdsa") // the user can insert a legal value or ilegal value
 print(errorLabel)
+
 

@@ -18,6 +18,5 @@ struct AlbumResponse: Codable {
 class ArtistAlbum: Codable, Identifiable {
     let collectionId: Int
     let collectionName: String
-    
 }
 

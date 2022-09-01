@@ -8,7 +8,6 @@
 import SwiftUI
 
 // MARK: - View
-
 struct AlbumDetailView: View {
     @StateObject private var viewModel = AlbumDetailViewModel()
     var body: some View {

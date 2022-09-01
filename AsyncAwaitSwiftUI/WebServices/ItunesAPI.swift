@@ -51,14 +51,14 @@ extension AlbumDetailViewModel {
     func getAlbums(artist: String) async  {
         let url = ItunesAPI.getAlbums(artist: artist).url!
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
-            let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data)
+            let (data, response) = try await URLSession.shared.data(from: url) // async code
+            let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
             self.searchedAlbums = decodedAlbum.results
             
             // MARK: - handling server responses here
             let serverResponse = response as? HTTPURLResponse
             print("👉", data)
-            print("👉", serverResponse?.statusCode)
+            print("👉", Int(serverResponse?.statusCode ?? 200))
             
             // NOTE: la codeline del 'try' Sí se pudo ejecutar
             print("👉 La request SÍ se pudo ejecutar")
@@ -80,13 +80,43 @@ extension AlbumDetailViewModel {
         }
         
         // MARK: - handling do block error here
-        // ERROR scenario ❌
-        catch {
-            // NOTE: la codeline del 'try' NO se pudo ejecutar
-            print(" 👉 La request NO se pudo ejecutar")
-            
+        // Decoding error scenario ❌
+         catch let DecodingError.dataCorrupted(context) {
+            print("☠️ Data corrupted:", context)
+        } catch let DecodingError.keyNotFound(key, context) {
+            print("🔑 Key '\(key)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch let DecodingError.valueNotFound(value, context) {
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch let DecodingError.typeMismatch(type, context)  {
+            print("😳 Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch {
+            print("error: ", error)
         }
-      }
+        
+//        catch {
+//            ErrorHandler.default.decodingError()
+//            ErrorHandler.default.apiCallError()
+//        }
+        
+        
+    }
+}
+
+
+// Centralizing error handling
+struct ErrorHandler {
+    
+    static let `default` = ErrorHandler()
+    
+    let genericMessage = "Sorry! Something went wrong"
+    
+    func decodingError() {}
+    
+    func apiCallError() {}
+
 }
 
 
