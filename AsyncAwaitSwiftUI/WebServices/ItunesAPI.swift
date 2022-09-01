@@ -50,9 +50,11 @@ extension AlbumDetailViewModel {
     @MainActor
     func getAlbums(artist: String) async  {
         let url = ItunesAPI.getAlbums(artist: artist).url!
+        isLoading = true
         do {
             let (data, response) = try await URLSession.shared.data(from: url) // async code
             let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
+            isLoading = false
             self.searchedAlbums = decodedAlbum.results
             
             // MARK: - handling server responses here

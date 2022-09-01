@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		828C303928C1189D007AFB76 /* DogsBreedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C303828C1189D007AFB76 /* DogsBreedModel.swift */; };
+		828C303B28C118C2007AFB76 /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C303A28C118C2007AFB76 /* ArtistsView.swift */; };
+		828C303F28C118CA007AFB76 /* DogsPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C303D28C118CA007AFB76 /* DogsPicturesView.swift */; };
+		828C304028C118CA007AFB76 /* DogsBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C303E28C118CA007AFB76 /* DogsBreedsView.swift */; };
+		828C304328C118EB007AFB76 /* DogsPicturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C304228C118EB007AFB76 /* DogsPicturesViewModel.swift */; };
+		828C304528C118F4007AFB76 /* DogsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C304428C118F4007AFB76 /* DogsAPI.swift */; };
 		A6A76C6728A3DED6001FC72E /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */; };
 		A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */; };
 		A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */; };
@@ -38,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		828C303828C1189D007AFB76 /* DogsBreedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsBreedModel.swift; sourceTree = "<group>"; };
+		828C303A28C118C2007AFB76 /* ArtistsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
+		828C303D28C118CA007AFB76 /* DogsPicturesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsPicturesView.swift; sourceTree = "<group>"; };
+		828C303E28C118CA007AFB76 /* DogsBreedsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsBreedsView.swift; sourceTree = "<group>"; };
+		828C304228C118EB007AFB76 /* DogsPicturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsPicturesViewModel.swift; sourceTree = "<group>"; };
+		828C304428C118F4007AFB76 /* DogsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsAPI.swift; sourceTree = "<group>"; };
 		A68E1EFA28B7D3D000C73644 /* error-handling.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "error-handling.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A6A5A6A6289D6260009B758B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
@@ -81,10 +93,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		828C303C28C118CA007AFB76 /* DogsViews */ = {
+			isa = PBXGroup;
+			children = (
+				828C303D28C118CA007AFB76 /* DogsPicturesView.swift */,
+				828C303E28C118CA007AFB76 /* DogsBreedsView.swift */,
+			);
+			path = DogsViews;
+			sourceTree = "<group>";
+		};
+		828C304128C118D1007AFB76 /* ArtistsView */ = {
+			isa = PBXGroup;
+			children = (
+				828C303A28C118C2007AFB76 /* ArtistsView.swift */,
+				A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */,
+			);
+			path = ArtistsView;
+			sourceTree = "<group>";
+		};
 		A6A76C6128A3DE51001FC72E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */,
+				828C304128C118D1007AFB76 /* ArtistsView */,
+				828C303C28C118CA007AFB76 /* DogsViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -93,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */,
+				828C304228C118EB007AFB76 /* DogsPicturesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -109,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */,
+				828C304428C118F4007AFB76 /* DogsAPI.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -117,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */,
+				828C303828C1189D007AFB76 /* DogsBreedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,12 +355,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828C304028C118CA007AFB76 /* DogsBreedsView.swift in Sources */,
+				828C303928C1189D007AFB76 /* DogsBreedModel.swift in Sources */,
+				828C303B28C118C2007AFB76 /* ArtistsView.swift in Sources */,
+				828C304528C118F4007AFB76 /* DogsAPI.swift in Sources */,
 				A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */,
 				A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */,
 				A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */,
+				828C304328C118EB007AFB76 /* DogsPicturesViewModel.swift in Sources */,
 				A6A76C6728A3DED6001FC72E /* AlbumDetailView.swift in Sources */,
 				A6EF82992893383C004A462F /* AsyncAwaitSwiftUIApp.swift in Sources */,
 				A6A76C7728A3E422001FC72E /* Constants.swift in Sources */,
+				828C303F28C118CA007AFB76 /* DogsPicturesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +534,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,7 +565,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
