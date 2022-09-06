@@ -1,6 +1,19 @@
 
 import Foundation
 
+// Ref: https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID515
+func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+
+do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+
+
 var errorLabel = "" // shows the error description to the user (feedback)
 
 // Error Protocol: A type representing an error value that can be thrown.
@@ -85,7 +98,7 @@ func userDidPickName(_ username: String) {
 
 // TODO: async func version of 'userDidPickName(uesrname: String)'
 
-userDidPickName("Gdkdsa") // the user can insert a legal value or ilegal value
+userDidPickName("somename") // the user can insert a legal value or ilegal value
 print(errorLabel)
 
 

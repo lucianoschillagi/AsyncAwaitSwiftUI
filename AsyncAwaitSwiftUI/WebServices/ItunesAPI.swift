@@ -108,17 +108,3 @@ extension AlbumDetailViewModel {
 }
 
 
-// Centralizing error handling
-struct ErrorHandler {
-    
-    static let `default` = ErrorHandler()
-    
-    let genericMessage = "Sorry! Something went wrong"
-    
-    func decodingError() {}
-    
-    func apiCallError() {}
-
-}
-
-

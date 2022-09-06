@@ -39,7 +39,7 @@ enum DogsAPI {
         // https://wordsapiv1.p.rapidapi.com/words/Swift/definitions
         switch self {
         case .getDogsPicture(let breed):
-            return "/api/breed/\(breed.description)/images"
+            return "/api/breed/\(breed.description)/images/random/20"
         }
     }
 

@@ -9,6 +9,6 @@ import Foundation
 
 // MARK: - ViewModel
 class DogsPicturesViewModel: ObservableObject {
-    @Published var searchedDogsBreed: [String] = [""]// combine publisher
+    @Published var searchedDogsBreed: [String] = []// combine publisher
     @Published var isLoading = false
 }

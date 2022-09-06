@@ -18,6 +18,7 @@
 		A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */; };
 		A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */; };
 		A6A76C7728A3E422001FC72E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C7628A3E422001FC72E /* Constants.swift */; };
+		A6AB4EAF28C7DBDA0067EB21 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AB4EAE28C7DBDA0067EB21 /* ErrorHandler.swift */; };
 		A6EF82992893383C004A462F /* AsyncAwaitSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */; };
 		A6EF829D2893383C004A462F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829C2893383C004A462F /* Assets.xcassets */; };
 		A6EF82A02893383C004A462F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829F2893383C004A462F /* Preview Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
 		A6A76C7628A3E422001FC72E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A6AB4EAE28C7DBDA0067EB21 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		A6EF82952893383C004A462F /* AsyncAwaitSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncAwaitSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitSwiftUIApp.swift; sourceTree = "<group>"; };
 		A6EF829C2893383C004A462F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A76C7628A3E422001FC72E /* Constants.swift */,
+				A6AB4EAE28C7DBDA0067EB21 /* ErrorHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				828C303B28C118C2007AFB76 /* ArtistsView.swift in Sources */,
 				828C304528C118F4007AFB76 /* DogsAPI.swift in Sources */,
 				A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */,
+				A6AB4EAF28C7DBDA0067EB21 /* ErrorHandler.swift in Sources */,
 				A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */,
 				A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */,
 				828C304328C118EB007AFB76 /* DogsPicturesViewModel.swift in Sources */,
