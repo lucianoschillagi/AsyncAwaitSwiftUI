@@ -32,7 +32,7 @@ struct DogsPicturesView: View {
     }
     
     private var imagesButtonView: some View {
-        ForEach(viewModel.searchedDogsBreed, id: \.self) { dogPicture in
+        ForEach(viewModel.searchedDogsBreed.prefix(10), id: \.self) { dogPicture in
             Button {
                 //
             } label: {
