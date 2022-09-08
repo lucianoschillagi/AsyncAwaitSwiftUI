@@ -79,9 +79,6 @@ func validate(username: String) throws {
     
     // TODO: Error Condition 4, whitespaces
     
-    
-
-    
     // OK Condition
     if username.count > 3 && username.count < 15 {
         print("✅ OK")

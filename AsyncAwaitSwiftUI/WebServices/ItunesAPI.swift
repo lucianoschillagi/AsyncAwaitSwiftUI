@@ -58,30 +58,33 @@ extension AlbumDetailViewModel {
             self.searchedAlbums = decodedAlbum.results
             
             // MARK: - handling server responses here
+            
+            
+            
             let serverResponse = response as? HTTPURLResponse
             print("👉", data)
             print("👉", Int(serverResponse?.statusCode ?? 200))
             
-            // NOTE: la codeline del 'try' Sí se pudo ejecutar
-            print("👉 La request SÍ se pudo ejecutar")
-            // OK scenario ✅
-            // 200-299
-            
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 300 && statusCode <= 599 else {
-                print("server response is btw 200-299, ✅")
+            // GUARD-b: if response is not in success range
+            guard let statusCode = serverResponse?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                print(NetworkRequestError.notSuccessRange)
                 return
             }
-            
-            // ERROR scenario ❌
-            // 400-499
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print("server response is btw 400-499, ❌, todo: handle the error")
+
+            // GUARD-c: if response is in server error range (500-599)
+            guard let serverError = serverResponse?.statusCode, serverError >= 500 && serverError <= 599 else {
+                print(NetworkRequestError.serverError)
+                print(serverResponse?.statusCode)
                 return
             }
+     
             
         }
         
         // MARK: - handling do block error here
+        catch {
+            print(NetworkRequestError.catchError)
+        }
         // Decoding error scenario ❌
          catch let DecodingError.dataCorrupted(context) {
             print("☠️ Data corrupted:", context)

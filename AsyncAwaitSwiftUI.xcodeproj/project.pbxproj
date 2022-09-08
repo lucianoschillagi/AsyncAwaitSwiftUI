@@ -13,12 +13,14 @@
 		828C304028C118CA007AFB76 /* DogsBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C303E28C118CA007AFB76 /* DogsBreedsView.swift */; };
 		828C304328C118EB007AFB76 /* DogsPicturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C304228C118EB007AFB76 /* DogsPicturesViewModel.swift */; };
 		828C304528C118F4007AFB76 /* DogsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C304428C118F4007AFB76 /* DogsAPI.swift */; };
+		A630AFE528C94D8400DF9453 /* UsingResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A630AFE428C94D8400DF9453 /* UsingResultType.swift */; };
 		A6A76C6728A3DED6001FC72E /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */; };
 		A6A76C6928A3DF5A001FC72E /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6828A3DF5A001FC72E /* AlbumDetailViewModel.swift */; };
 		A6A76C6E28A3DFC4001FC72E /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6D28A3DFC4001FC72E /* AlbumModel.swift */; };
 		A6A76C7028A3E000001FC72E /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */; };
 		A6A76C7728A3E422001FC72E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A76C7628A3E422001FC72E /* Constants.swift */; };
 		A6AB4EAF28C7DBDA0067EB21 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AB4EAE28C7DBDA0067EB21 /* ErrorHandler.swift */; };
+		A6AB4EB128C8F79C0067EB21 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AB4EB028C8F79C0067EB21 /* HTTPStatusCodes.swift */; };
 		A6EF82992893383C004A462F /* AsyncAwaitSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */; };
 		A6EF829D2893383C004A462F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829C2893383C004A462F /* Assets.xcassets */; };
 		A6EF82A02893383C004A462F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EF829F2893383C004A462F /* Preview Assets.xcassets */; };
@@ -51,6 +53,7 @@
 		828C303E28C118CA007AFB76 /* DogsBreedsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsBreedsView.swift; sourceTree = "<group>"; };
 		828C304228C118EB007AFB76 /* DogsPicturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsPicturesViewModel.swift; sourceTree = "<group>"; };
 		828C304428C118F4007AFB76 /* DogsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsAPI.swift; sourceTree = "<group>"; };
+		A630AFE428C94D8400DF9453 /* UsingResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsingResultType.swift; sourceTree = "<group>"; };
 		A68E1EFA28B7D3D000C73644 /* error-handling.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "error-handling.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A6A5A6A6289D6260009B758B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A76C6628A3DED6001FC72E /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
 		A6A76C7628A3E422001FC72E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6AB4EAE28C7DBDA0067EB21 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		A6AB4EB028C8F79C0067EB21 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
 		A6EF82952893383C004A462F /* AsyncAwaitSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncAwaitSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EF82982893383C004A462F /* AsyncAwaitSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitSwiftUIApp.swift; sourceTree = "<group>"; };
 		A6EF829C2893383C004A462F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			children = (
 				A6A76C6F28A3E000001FC72E /* ItunesAPI.swift */,
 				828C304428C118F4007AFB76 /* DogsAPI.swift */,
+				A6AB4EB028C8F79C0067EB21 /* HTTPStatusCodes.swift */,
+				A630AFE428C94D8400DF9453 /* UsingResultType.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -358,6 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A630AFE528C94D8400DF9453 /* UsingResultType.swift in Sources */,
+				A6AB4EB128C8F79C0067EB21 /* HTTPStatusCodes.swift in Sources */,
 				828C304028C118CA007AFB76 /* DogsBreedsView.swift in Sources */,
 				828C303928C1189D007AFB76 /* DogsBreedModel.swift in Sources */,
 				828C303B28C118C2007AFB76 /* ArtistsView.swift in Sources */,
