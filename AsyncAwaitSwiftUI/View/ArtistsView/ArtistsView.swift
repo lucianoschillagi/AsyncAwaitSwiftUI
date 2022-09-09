@@ -11,6 +11,7 @@ struct ArtistsView: View {
     @StateObject private var viewModel = AlbumDetailViewModel()
     var body: some View {
         NavigationView {
+        
             List(K.artists, id: \.self) { artist in
                 NavigationLink(artist) {
                     AlbumDetailView(artist: artist)
