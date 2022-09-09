@@ -8,11 +8,13 @@ func canThrowAnError() throws {
 
 do {
     try canThrowAnError()
+    // OK
+    print("no errors")
     // no error was thrown
 } catch {
+    // ERROR
     // an error was thrown
 }
-
 
 var errorLabel = "" // shows the error description to the user (feedback)
 
@@ -88,6 +90,8 @@ func validate(username: String) throws {
 func userDidPickName(_ username: String) {
     do {
         try validate(username: username) // "validate" func can throw an error
+        // ndlasnd
+        // hldfdasf
     } catch {
         errorLabel = error.localizedDescription
     }

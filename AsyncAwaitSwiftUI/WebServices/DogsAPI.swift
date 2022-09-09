@@ -58,6 +58,11 @@ extension DogsPicturesViewModel {
     // Networking
     @MainActor
     func getDogsPicture(breed: String) async  {
+        
+        // TODO: Use Task and Result
+        
+        
+        
         let url = DogsAPI.getDogsPicture(breed: breed).url!
         print(url)
         isLoading = true
@@ -71,30 +76,16 @@ extension DogsPicturesViewModel {
             let serverResponse = response as? HTTPURLResponse
             print("👉", data)
             print("👉", serverResponse?.statusCode)
+            
+            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
 
-            // NOTE: la codeline del 'try' Sí se pudo ejecutar
-            print("👉 La request SÍ se pudo ejecutar")
-            // OK scenario ✅
-            // 200-299
-
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 300 && statusCode <= 599 else {
-                print("server response is btw 200-299, ✅")
-                return
-            }
-
-            // ERROR scenario ❌
-            // 400-499
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print("server response is btw 400-499, ❌, todo: handle the error")
-                return
-            }
+        
         }
 
         // MARK: - handling do block error here
         // ERROR scenario ❌
         catch {
-            // NOTE: la codeline del 'try' NO se pudo ejecutar
-            print(" 👉 La request NO se pudo ejecutar")
+          
 
         }
       }

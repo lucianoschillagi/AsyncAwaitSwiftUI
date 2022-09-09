@@ -22,6 +22,7 @@ struct DogsPicturesView: View {
     
     private var gridView: some View {
         GeometryReader { geo in
+            Text(viewModel.errorDescription)
             ScrollView {
                 LazyVGrid(columns: columns) {
                     imagesButtonView

@@ -25,13 +25,12 @@ struct ContentView: View {
             }.padding()
     }
 
-
     /// Async error handling option 1 (with do try catch)
 //    func fetchReadings() async {
 //        do {
-//            let url = URL(string: "https://hws.dev/readings.jsonn")!
-//            let (data, _) = try await URLSession.shared.data(from: url)
-//            let readings = try JSONDecoder().decode([Double].self, from: data)
+//            let url = URL(string: "https://hws.dev/readings.json")!
+//            let (data, _) = try await URLSession.shared.data(from: url) // async
+//            let readings = try JSONDecoder().decode([Double].self, from: data) // sync
 //            output = "Found \(readings.count) readings"
 //        } catch {
 //            print("❌ Download error \(error.localizedDescription)")
@@ -42,7 +41,7 @@ struct ContentView: View {
 
         /// Task: a unit of async work
         let fetchTask = Task { () -> String in
-            let url = URL(string: "https://hws.dev/readings.jsonn")!
+            let url = URL(string: "https://hws.dev/readings.json")!
             let (data, _) = try await URLSession.shared.data(from: url)
             let readings = try JSONDecoder().decode([Double].self, from: data)
             return "Found \(readings.count) readings"
@@ -63,11 +62,22 @@ struct ContentView: View {
         switch result {
             case .success(let str):
                 output = str
+            
+            
+            
             case .failure(let error):
+            
                 output = "Error: \(error.localizedDescription)"
                 print("❌", NetworkingError.one)
+            
+            
+            
         }
+        
+        
     }
+    
+    
 }
 
 

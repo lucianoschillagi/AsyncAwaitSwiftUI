@@ -49,35 +49,24 @@ extension AlbumDetailViewModel {
     // Networking
     @MainActor
     func getAlbums(artist: String) async  {
+        
+        // TODO: Use Task and Result
+        
+        
+        
         let url = ItunesAPI.getAlbums(artist: artist).url!
         isLoading = true
         do {
-            let (data, response) = try await URLSession.shared.data(from: url) // async code
+            let (data, _) = try await URLSession.shared.data(from: url) // async code
             let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
             isLoading = false
             self.searchedAlbums = decodedAlbum.results
             
             // MARK: - handling server responses here
+            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
             
             
-            
-            let serverResponse = response as? HTTPURLResponse
-            print("👉", data)
-            print("👉", Int(serverResponse?.statusCode ?? 200))
-            
-            // GUARD-b: if response is not in success range
-            guard let statusCode = serverResponse?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print(NetworkRequestError.notSuccessRange)
-                return
-            }
-
-            // GUARD-c: if response is in server error range (500-599)
-            guard let serverError = serverResponse?.statusCode, serverError >= 500 && serverError <= 599 else {
-                print(NetworkRequestError.serverError)
-                print(serverResponse?.statusCode)
-                return
-            }
-     
+           
             
         }
         
