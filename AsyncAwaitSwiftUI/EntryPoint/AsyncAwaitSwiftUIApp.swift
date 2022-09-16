@@ -11,22 +11,23 @@ import SwiftUI
 struct AsyncAwaitSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-//            NavigationView {
-//                TabView {
-//                    ArtistsView()
-//                        .tabItem {
-//                            Image(systemName: "music.note")
-//                        }
-//                    DogsBreedsView()
-//                        .tabItem {
-//                            Image(systemName: "pawprint.fill")
-//                                .foregroundColor(.primary)
-//                        }
-//                }
-//            }
-            ContentView()
+            NavigationView {
+                TabView {
+                    ArtistsView()
+                        .tabItem {
+                            Image(systemName: "music.note")
+                    }
+                    DogsBreedsView()
+                        .tabItem {
+                            Image(systemName: "pawprint.fill")
+                                .foregroundColor(.primary)
+                    }
+                }
+            }
         }
     }
 }
+
+
 
 

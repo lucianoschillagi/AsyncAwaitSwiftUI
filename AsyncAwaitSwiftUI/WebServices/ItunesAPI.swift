@@ -45,15 +45,10 @@ enum ItunesAPI {
 }
 
 extension AlbumDetailViewModel {
-    
     // Networking
     @MainActor
     func getAlbums(artist: String) async  {
-        
         // TODO: Use Task and Result
-        
-        
-        
         let url = ItunesAPI.getAlbums(artist: artist).url!
         isLoading = true
         do {
@@ -61,13 +56,6 @@ extension AlbumDetailViewModel {
             let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
             isLoading = false
             self.searchedAlbums = decodedAlbum.results
-            
-            // MARK: - handling server responses here
-            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
-            
-            
-           
-            
         }
         
         // MARK: - handling do block error here
@@ -89,13 +77,6 @@ extension AlbumDetailViewModel {
         } catch {
             print("error: ", error)
         }
-        
-//        catch {
-//            ErrorHandler.default.decodingError()
-//            ErrorHandler.default.apiCallError()
-//        }
-        
-        
     }
 }
 

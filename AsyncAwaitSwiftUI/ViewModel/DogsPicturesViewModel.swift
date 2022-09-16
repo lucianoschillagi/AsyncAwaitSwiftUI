@@ -14,5 +14,5 @@ class DogsPicturesViewModel: ObservableObject {
     
     // error scenario
     @Published var hasAnError = false
-    let errorDescription = ""
+    @Published var alertMessage = ""
 }

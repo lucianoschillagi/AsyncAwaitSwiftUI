@@ -11,21 +11,21 @@
 import SwiftUI
 
 enum NetworkingError: Error {
-    case notSuccessRange
+    case clientError
     case serverError
 }
 
 extension NetworkingError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .notSuccessRange:
+        case .clientError:
             return NSLocalizedString(
-                "❌ the response is not in success range",
+                "❌ client error",
                 comment: ""
             )
         case .serverError:
             return NSLocalizedString(
-                "❌ the response is in server error range",
+                "❌ server error",
                 comment: ""
             )
         }
@@ -51,17 +51,25 @@ struct ContentView: View {
             print("status_code", httpUrlResponse?.statusCode)
             print("status_code", httpUrlResponse?.status!)
 
-            // TODO: refactor with guard statements
-            if httpUrlResponse?.statusCode == 200 {
+            /// Handling HTTP Server Response Status Codes
+            // OK Scenario
+            if httpUrlResponse!.statusCode >= 200 && httpUrlResponse!.statusCode <= 299 {
                 print("todo está OK")
             }
-            if httpUrlResponse!.statusCode >= 200 && httpUrlResponse!.statusCode <= 299 {
-                output = NetworkingError.notSuccessRange.errorDescription ?? ""
+            
+            // Error Scenario
+            if httpUrlResponse!.statusCode >= 400 && httpUrlResponse!.statusCode <= 499 {
+                output = NetworkingError.clientError.errorDescription ?? ""
             }
+            
             if httpUrlResponse!.statusCode >= 500 && httpUrlResponse!.statusCode <= 599 {
                 output = NetworkingError.serverError.errorDescription ?? ""
             }
+            
+            
             let readings = try JSONDecoder().decode([Double].self, from: data) // sync code
+            
+            
             return "Found \(readings.count) readings"
         }
         
