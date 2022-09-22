@@ -60,33 +60,61 @@ extension DogsPicturesViewModel {
     func getDogsPicture(breed: String) async  {
         
         // TODO: Use Task and Result
-        
-        
-        
-        let url = DogsAPI.getDogsPicture(breed: breed).url!
-        print(url)
-        isLoading = true
-        do {
+        let fetchTask = Task { () -> [String] in
+            let url = DogsAPI.getDogsPicture(breed: breed).url!
             let (data, response) = try await URLSession.shared.data(from: url)
             let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
-            isLoading = false
-            self.searchedDogsBreed = decodedDogsBreed.message
 
-            // MARK: - handling server responses here
-            let serverResponse = response as? HTTPURLResponse
-            print("👉", data)
-            print("👉", serverResponse?.statusCode)
-            
-            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
-
+//            let httpUrlResponse = response as? HTTPURLResponse
+//            
+//            if httpUrlResponse?.statusCode == 200 {
+//                print("todo está OK")
+//            }
+//            if httpUrlResponse!.statusCode >= 200 && httpUrlResponse!.statusCode <= 299 {
+//                alertMessage = NetworkingError.notSuccessRange.errorDescription ?? ""
+//            }
+//            if httpUrlResponse!.statusCode >= 500 && httpUrlResponse!.statusCode <= 599 {
+//                alertMessage = NetworkingError.serverError.errorDescription ?? ""
+//            }
+//            if (response as? HTTPURLResponse)?.statusCode == 200 {
+//                let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
+//                return decodedDogsBreed.message
+//            }
+            return decodedDogsBreed.message
+        }
+        let result = await fetchTask.result
         
+        switch result {
+        case .success(let breeds):
+            self.searchedDogsBreed = breeds
+        case .failure(let error):
+            print(error.localizedDescription)
         }
-
-        // MARK: - handling do block error here
-        // ERROR scenario ❌
-        catch {
-          
-
-        }
+        
+//        let url = DogsAPI.getDogsPicture(breed: breed).url!
+//        print(url)
+//        isLoading = true
+//        do {
+//            let (data, response) = try await URLSession.shared.data(from: url)
+//            let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
+//            isLoading = false
+//            self.searchedDogsBreed = decodedDogsBreed.message
+//
+//            // MARK: - handling server responses here
+//            let serverResponse = response as? HTTPURLResponse
+//            print("👉", data)
+//            print("👉", serverResponse?.statusCode)
+//
+//            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
+//
+//
+//        }
+//
+//        // MARK: - handling do block error here
+//        // ERROR scenario ❌
+//        catch {
+//
+//
+//        }
       }
 }

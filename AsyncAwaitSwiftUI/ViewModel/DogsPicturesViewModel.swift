@@ -11,6 +11,8 @@ import Foundation
 class DogsPicturesViewModel: ObservableObject {
     @Published var searchedDogsBreed: [String] = [] // combine publisher
     @Published var isLoading = false
+    @Published var alertMessage = ""
+    
     
     // error scenario
     @Published var hasAnError = false
