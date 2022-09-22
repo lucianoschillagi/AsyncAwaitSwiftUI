@@ -14,17 +14,8 @@ enum DogsAPI {
     
     // Builds a URL to 'get dog's pictures by breed' method
     case getDogsPicture(breed: String)
+//  case anotherCase
 
-    // Builds a URL to '----' method
-//    case anotherCase
-
-    // Returns the called URL
-    // https://dog.ceo/api/breed/(breed)/images
-    // https:// 👉 Scheme
-    // dog.ceo/api/ 👉 Host
-    // breed/ 👉 Path
-    // (breed)/images 👉 Query
-    
     var url: URL? {
         var component = URLComponents()
         component.scheme = "https" // static
@@ -34,7 +25,7 @@ enum DogsAPI {
         return component.url
     }
 
-//     path builder
+//  path builder
     private func dogsBreedPath() -> String? {
         // https://wordsapiv1.p.rapidapi.com/words/Swift/definitions
         switch self {
@@ -55,9 +46,9 @@ enum DogsAPI {
 
 extension DogsPicturesViewModel {
 
-    // Networking
     @MainActor
     func getDogsPicture(breed: String) async  {
+<<<<<<< HEAD
         
         // TODO: Use Task and Result
         let fetchTask = Task { () -> [String] in
@@ -84,12 +75,42 @@ extension DogsPicturesViewModel {
         }
         let result = await fetchTask.result
         
+=======
+        let fetchTask = Task { () -> [String] in
+            let url = DogsAPI.getDogsPicture(breed: breed).url!
+            let (data, response) = try await URLSession.shared.data(from: url)
+            let httpUrlResponse = response as? HTTPURLResponse
+            var statusCode = 0
+            if let statusCodeTemp = httpUrlResponse?.statusCode {
+                statusCode = statusCodeTemp
+            }
+            
+            /// Handling HTTP URL Server Response
+            /// OK scenario ✅
+            if httpUrlResponse?.statusCode == 200 {
+                print("todo está OK")
+            }
+            
+            // ERROR scenario ❌
+            if statusCode >= 400 && statusCode <= 499 {
+                alertMessage = NetworkingError.clientError.errorDescription ?? ""
+            }
+            if statusCode >= 500 && statusCode <= 599 {
+                alertMessage = NetworkingError.serverError.errorDescription ?? ""
+            }
+            
+            let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
+            return decodedDogsBreed.message
+        }
+        let result = await fetchTask.result
+>>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
         switch result {
         case .success(let breeds):
             self.searchedDogsBreed = breeds
         case .failure(let error):
             print(error.localizedDescription)
         }
+<<<<<<< HEAD
         
 //        let url = DogsAPI.getDogsPicture(breed: breed).url!
 //        print(url)
@@ -117,4 +138,7 @@ extension DogsPicturesViewModel {
 //
 //        }
       }
+=======
+    }
+>>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
 }

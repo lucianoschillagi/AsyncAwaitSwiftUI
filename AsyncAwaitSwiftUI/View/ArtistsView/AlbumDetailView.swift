@@ -8,7 +8,6 @@
 import SwiftUI
 
 // MARK: - View
-
 struct AlbumDetailView: View {
     @StateObject private var viewModel = AlbumDetailViewModel()
     var artist: String
@@ -17,10 +16,8 @@ struct AlbumDetailView: View {
             List(viewModel.searchedAlbums) { album in
                 Text(album.collectionName)
           }
-            .onAppear {
-                Task {
-                    await viewModel.getAlbums(artist: artist) // async code ⌛️
-                }
+            .task {
+                await viewModel.getAlbums(artist: artist) // async code ⌛️
             }
             if viewModel.isLoading {
                 ProgressView()

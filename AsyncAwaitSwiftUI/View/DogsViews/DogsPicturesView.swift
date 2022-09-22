@@ -13,16 +13,14 @@ struct DogsPicturesView: View {
     let columns = [GridItem(.adaptive(minimum: 150))]
     var body: some View {
         gridView
-            .onAppear {
-                Task {
-                    await viewModel.getDogsPicture(breed: breed)
-                }
+            .task {
+                await viewModel.getDogsPicture(breed: breed)
             }
     }
     
     private var gridView: some View {
         GeometryReader { geo in
-            Text(viewModel.errorDescription)
+            Text(viewModel.alertMessage)
             ScrollView {
                 LazyVGrid(columns: columns) {
                     imagesButtonView
