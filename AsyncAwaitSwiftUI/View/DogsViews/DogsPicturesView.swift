@@ -16,11 +16,20 @@ struct DogsPicturesView: View {
             .task {
                 await viewModel.getDogsPicture(breed: breed)
             }
+            .alert(isPresented: $viewModel.hasAnError) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton:
+                            .default(Text("OK"), action: {
+                                viewModel.isLoading.toggle()
+                            })
+                )
+            }
     }
     
     private var gridView: some View {
         GeometryReader { geo in
-            Text(viewModel.alertMessage)
             ScrollView {
                 LazyVGrid(columns: columns) {
                     imagesButtonView
@@ -31,7 +40,7 @@ struct DogsPicturesView: View {
     }
     
     private var imagesButtonView: some View {
-        ForEach(viewModel.searchedDogsBreed, id: \.self) { dogPicture in
+        ForEach(viewModel.searchedDogsBreed.prefix(10), id: \.self) { dogPicture in
             Button {
                 //
             } label: {

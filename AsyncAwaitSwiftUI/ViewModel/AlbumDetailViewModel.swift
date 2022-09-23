@@ -11,5 +11,9 @@ import Foundation
 class AlbumDetailViewModel: ObservableObject {
     @Published var searchedAlbums = [ArtistAlbum]()// combine publisher
     @Published var isLoading = false
+    @Published var statusCode = 0
+    // error scenario
+    @Published var hasAnError = false
+    @Published var alertMessage = ""
 }
 

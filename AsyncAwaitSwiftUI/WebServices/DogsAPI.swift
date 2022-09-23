@@ -48,6 +48,7 @@ extension DogsPicturesViewModel {
 
     @MainActor
     func getDogsPicture(breed: String) async  {
+        isLoading = true
         let fetchTask = Task { () -> [String] in
             let url = DogsAPI.getDogsPicture(breed: breed).url!
             let (data, response) = try await URLSession.shared.data(from: url)
@@ -58,28 +59,61 @@ extension DogsPicturesViewModel {
             }
             
             /// Handling HTTP URL Server Response
+            // ERROR scenario ❌
+            if statusCode >= 400 && statusCode <= 499 {
+                alertMessage = NetworkingError.clientError.errorDescription ?? ""
+                self.alertMessage = alertMessage
+                self.hasAnError = true
+            }
+            if statusCode >= 500 && statusCode <= 599 {
+                alertMessage = NetworkingError.serverError.errorDescription ?? ""
+                self.alertMessage = alertMessage
+                self.hasAnError = true
+            }
             /// OK scenario ✅
             if httpUrlResponse?.statusCode == 200 {
                 print("todo está OK")
             }
-            
-            // ERROR scenario ❌
-            if statusCode >= 400 && statusCode <= 499 {
-                alertMessage = NetworkingError.clientError.errorDescription ?? ""
-            }
-            if statusCode >= 500 && statusCode <= 599 {
-                alertMessage = NetworkingError.serverError.errorDescription ?? ""
-            }
-            
+            isLoading = false
             let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
             return decodedDogsBreed.message
         }
         let result = await fetchTask.result
+
         switch result {
         case .success(let breeds):
             self.searchedDogsBreed = breeds
         case .failure(let error):
             print(error.localizedDescription)
+            self.alertMessage = error.localizedDescription
+            self.hasAnError = true
         }
+        
+//        let url = DogsAPI.getDogsPicture(breed: breed).url!
+//        print(url)
+//        isLoading = true
+//        do {
+//            let (data, response) = try await URLSession.shared.data(from: url)
+//            let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
+//            isLoading = false
+//            self.searchedDogsBreed = decodedDogsBreed.message
+//
+//            // MARK: - handling server responses here
+//            let serverResponse = response as? HTTPURLResponse
+//            print("👉", data)
+//            print("👉", serverResponse?.statusCode)
+//
+//            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
+//
+//
+//        }
+//
+//        // MARK: - handling do block error here
+//        // ERROR scenario ❌
+//        catch {
+//
+//
+//        }
+      
     }
 }
