@@ -46,37 +46,104 @@ enum ItunesAPI {
 
 extension AlbumDetailViewModel {
     // Networking
+//    @MainActor
+//    func getAlbums(artist: String) async  {
+//        // TODO: Use Task and Result
+//        let url = ItunesAPI.getAlbums(artist: artist).url!
+//        isLoading = true
+//        do {
+//            let (data, _) = try await URLSession.shared.data(from: url) // async code
+//            let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
+//            isLoading = false
+//            self.searchedAlbums = decodedAlbum.results
+//        }
+//        
+//        // MARK: - handling do block error here
+//        catch {
+//            print(NetworkRequestError.catchError)
+//        }
+//        // Decoding error scenario ❌
+//         catch let DecodingError.dataCorrupted(context) {
+//            print("☠️ Data corrupted:", context)
+//        } catch let DecodingError.keyNotFound(key, context) {
+//            print("🔑 Key '\(key)' not found:", context.debugDescription)
+//            print("codingPath:", context.codingPath)
+//        } catch let DecodingError.valueNotFound(value, context) {
+//            print("Value '\(value)' not found:", context.debugDescription)
+//            print("codingPath:", context.codingPath)
+//        } catch let DecodingError.typeMismatch(type, context)  {
+//            print("😳 Type '\(type)' mismatch:", context.debugDescription)
+//            print("codingPath:", context.codingPath)
+//        } catch {
+//            print("error: ", error)
+//        }
+//    }
+    
     @MainActor
     func getAlbums(artist: String) async  {
-        // TODO: Use Task and Result
-        let url = ItunesAPI.getAlbums(artist: artist).url!
         isLoading = true
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url) // async code
-            let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data) // sync code
+        let fetchTask = Task { () -> [ArtistAlbum] in
+            let url = ItunesAPI.getAlbums(artist: artist).url!
+            let (data, response) = try await URLSession.shared.data(from: url)
+            let httpUrlResponse = response as? HTTPURLResponse
+            if let statusCodeTemp = httpUrlResponse?.statusCode {
+                self.statusCode = statusCodeTemp
+            }
             isLoading = false
-            self.searchedAlbums = decodedAlbum.results
+            /// Handling HTTP URL Server Response
+            // ERROR scenario ❌
+            if statusCode >= 400 && statusCode <= 499 {
+                alertMessage = NetworkingError.clientError.errorDescription ?? ""
+                hasAnError = true
+            }
+            if statusCode >= 500 && statusCode <= 599 {
+                alertMessage = NetworkingError.serverError.errorDescription ?? ""
+                hasAnError = true
+            }
+            /// OK scenario ✅
+            if httpUrlResponse?.statusCode == 200 {
+                print("todo está OK")
+            }
+            let decodedAlbum = try JSONDecoder().decode(AlbumResponse.self, from: data)
+            return decodedAlbum.results
+        }
+        let result = await fetchTask.result
+
+        switch result {
+        case .success(let artist):
+            self.searchedAlbums = artist
+        case .failure(let error):
+            print(error.localizedDescription)
+            self.alertMessage = error.localizedDescription
+            self.hasAnError = true
         }
         
-        // MARK: - handling do block error here
-        catch {
-            print(NetworkRequestError.catchError)
-        }
-        // Decoding error scenario ❌
-         catch let DecodingError.dataCorrupted(context) {
-            print("☠️ Data corrupted:", context)
-        } catch let DecodingError.keyNotFound(key, context) {
-            print("🔑 Key '\(key)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.valueNotFound(value, context) {
-            print("Value '\(value)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.typeMismatch(type, context)  {
-            print("😳 Type '\(type)' mismatch:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch {
-            print("error: ", error)
-        }
+//        let url = DogsAPI.getDogsPicture(breed: breed).url!
+//        print(url)
+//        isLoading = true
+//        do {
+//            let (data, response) = try await URLSession.shared.data(from: url)
+//            let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
+//            isLoading = false
+//            self.searchedDogsBreed = decodedDogsBreed.message
+//
+//            // MARK: - handling server responses here
+//            let serverResponse = response as? HTTPURLResponse
+//            print("👉", data)
+//            print("👉", serverResponse?.statusCode)
+//
+//            // TODO: Switch with ´enum HTTPStatusCode: Int, Error {}´
+//
+//
+//        }
+//
+//        // MARK: - handling do block error here
+//        // ERROR scenario ❌
+//        catch {
+//
+//
+//        }
+      
     }
 }
 

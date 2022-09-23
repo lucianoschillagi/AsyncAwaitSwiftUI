@@ -16,25 +16,14 @@ struct AsyncAwaitSwiftUIApp: App {
                     ArtistsView()
                         .tabItem {
                             Image(systemName: "music.note")
-<<<<<<< HEAD
                         }
-=======
-                    }
->>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
                     DogsBreedsView()
                         .tabItem {
                             Image(systemName: "pawprint.fill")
                                 .foregroundColor(.primary)
-<<<<<<< HEAD
                         }
                 }
             }
-//            ContentView()
-=======
-                    }
-                }
-            }
->>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
         }
     }
 }

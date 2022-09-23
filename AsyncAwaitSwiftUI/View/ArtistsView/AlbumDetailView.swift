@@ -15,13 +15,23 @@ struct AlbumDetailView: View {
         ZStack {
             List(viewModel.searchedAlbums) { album in
                 Text(album.collectionName)
-          }
+            }
             .task {
                 await viewModel.getAlbums(artist: artist) // async code ⌛️
             }
             if viewModel.isLoading {
                 ProgressView()
             }
+        }
+        .alert(isPresented: $viewModel.hasAnError) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.alertMessage),
+                dismissButton:
+                        .default(Text("OK"), action: {
+                            viewModel.isLoading.toggle()
+                        })
+            )
         }
     }
 }

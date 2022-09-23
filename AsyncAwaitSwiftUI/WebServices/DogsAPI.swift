@@ -48,34 +48,7 @@ extension DogsPicturesViewModel {
 
     @MainActor
     func getDogsPicture(breed: String) async  {
-<<<<<<< HEAD
-        
-        // TODO: Use Task and Result
-        let fetchTask = Task { () -> [String] in
-            let url = DogsAPI.getDogsPicture(breed: breed).url!
-            let (data, response) = try await URLSession.shared.data(from: url)
-            let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
-
-//            let httpUrlResponse = response as? HTTPURLResponse
-//            
-//            if httpUrlResponse?.statusCode == 200 {
-//                print("todo está OK")
-//            }
-//            if httpUrlResponse!.statusCode >= 200 && httpUrlResponse!.statusCode <= 299 {
-//                alertMessage = NetworkingError.notSuccessRange.errorDescription ?? ""
-//            }
-//            if httpUrlResponse!.statusCode >= 500 && httpUrlResponse!.statusCode <= 599 {
-//                alertMessage = NetworkingError.serverError.errorDescription ?? ""
-//            }
-//            if (response as? HTTPURLResponse)?.statusCode == 200 {
-//                let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
-//                return decodedDogsBreed.message
-//            }
-            return decodedDogsBreed.message
-        }
-        let result = await fetchTask.result
-        
-=======
+        isLoading = true
         let fetchTask = Task { () -> [String] in
             let url = DogsAPI.getDogsPicture(breed: breed).url!
             let (data, response) = try await URLSession.shared.data(from: url)
@@ -86,31 +59,35 @@ extension DogsPicturesViewModel {
             }
             
             /// Handling HTTP URL Server Response
+            // ERROR scenario ❌
+            if statusCode >= 400 && statusCode <= 499 {
+                alertMessage = NetworkingError.clientError.errorDescription ?? ""
+                self.alertMessage = alertMessage
+                self.hasAnError = true
+            }
+            if statusCode >= 500 && statusCode <= 599 {
+                alertMessage = NetworkingError.serverError.errorDescription ?? ""
+                self.alertMessage = alertMessage
+                self.hasAnError = true
+            }
             /// OK scenario ✅
             if httpUrlResponse?.statusCode == 200 {
                 print("todo está OK")
             }
-            
-            // ERROR scenario ❌
-            if statusCode >= 400 && statusCode <= 499 {
-                alertMessage = NetworkingError.clientError.errorDescription ?? ""
-            }
-            if statusCode >= 500 && statusCode <= 599 {
-                alertMessage = NetworkingError.serverError.errorDescription ?? ""
-            }
-            
+            isLoading = false
             let decodedDogsBreed = try JSONDecoder().decode(DogsBreedResponse.self, from: data)
             return decodedDogsBreed.message
         }
         let result = await fetchTask.result
->>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
+
         switch result {
         case .success(let breeds):
             self.searchedDogsBreed = breeds
         case .failure(let error):
             print(error.localizedDescription)
+            self.alertMessage = error.localizedDescription
+            self.hasAnError = true
         }
-<<<<<<< HEAD
         
 //        let url = DogsAPI.getDogsPicture(breed: breed).url!
 //        print(url)
@@ -137,8 +114,6 @@ extension DogsPicturesViewModel {
 //
 //
 //        }
-      }
-=======
+      
     }
->>>>>>> 7c5749b3b16235d6683bc568e74a24002199b22f
 }
